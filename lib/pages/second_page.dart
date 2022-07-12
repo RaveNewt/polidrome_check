@@ -85,7 +85,7 @@ class _Second_pageState extends State<Second_page> {
                 borderRadius: BorderRadius.circular(10),
               )),
           onPressed: () {
-            Navigator.pushNamed(context, '/third');
+            Navigator.pushNamed(context, '/third2');
           },
           child: Text(
             'Choose a User',
