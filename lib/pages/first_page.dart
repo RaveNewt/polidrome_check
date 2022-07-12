@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_api/shared/theme.dart';
 import 'package:mobile_api/widgets/CustomButton.dart';
 import 'package:mobile_api/widgets/CustomTextField.dart';
+import 'package:mobile_api/widgets/StatusBar.dart';
 
 class First_page extends StatefulWidget {
   First_page({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _First_pageState extends State<First_page> {
 
     Widget Foto() {
       return Container(
-        margin: EdgeInsets.only(top: 186),
+        margin: EdgeInsets.only(top: 154),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -120,6 +121,7 @@ class _First_pageState extends State<First_page> {
     return Stack(
       children: [
         Background(),
+        StatusBar(),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: SafeArea(
