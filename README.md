@@ -1,6 +1,8 @@
 # mobile_api
 
-A new Flutter project.
+This Project is about polidrome checker and GetAPI for reqres.in
+## Video
+[Link](https://youtube.com/shorts/-HVq5A27gPE?feature=share)
 
 ## Getting Started
 
