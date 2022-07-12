@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_api/pages/second_page.dart';
 import 'package:mobile_api/shared/theme.dart';
 import 'package:mobile_api/widgets/CustomButton.dart';
 import 'package:mobile_api/widgets/CustomTextField.dart';
@@ -14,6 +15,7 @@ class First_page extends StatefulWidget {
 class _First_pageState extends State<First_page> {
   final _check = TextEditingController();
   String message = '';
+  String value = 'First Screen';
   @override
   Widget build(BuildContext context) {
     Widget Background() {
@@ -45,9 +47,41 @@ class _First_pageState extends State<First_page> {
 
     Widget inputSection() {
       Widget nameInput() {
-        return CustomTextField(
-          hintText: 'Name',
-        );
+        return Container(
+            width: 310,
+            margin: EdgeInsets.only(bottom: 22),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  onChanged: (text) {
+                    value = text;
+                  },
+                  cursorColor: greyColor.withOpacity(0.3),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelStyle: textBlack.copyWith(
+                      fontSize: 16,
+                      fontWeight: medium,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Name',
+                    hintStyle: textGrey.copyWith(
+                      fontSize: 16,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(
+                        color: blackColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ));
       }
 
       Widget checkInput() {
@@ -137,7 +171,10 @@ class _First_pageState extends State<First_page> {
                   borderRadius: BorderRadius.circular(10),
                 )),
             onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Second_page(value: value)));
             },
             child: Text(
               'Next',
@@ -192,7 +229,7 @@ class _First_pageState extends State<First_page> {
     String reverse = original.replaceAll(' ', '').split('').reversed.join('');
     print(original);
 
-    String status = 'true';
+    String status = '';
     if (original == reverse) {
       status = 'Its A Palindrome';
       print('true');

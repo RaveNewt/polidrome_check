@@ -3,7 +3,8 @@ import 'package:mobile_api/shared/theme.dart';
 import 'package:mobile_api/widgets/StatusBar.dart';
 
 class Second_page extends StatefulWidget {
-  Second_page({Key? key}) : super(key: key);
+  final String value;
+  Second_page({Key? key, required this.value}) : super(key: key);
 
   @override
   State<Second_page> createState() => _Second_pageState();
@@ -58,6 +59,20 @@ class _Second_pageState extends State<Second_page> {
       );
     }
 
+    Widget GetName() {
+      return Container(
+        margin: EdgeInsets.only(top: 4),
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: Text(
+          widget.value,
+          style: textBlack.copyWith(
+            fontSize: 24,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
     Widget nextButton() {
       return Container(
         margin: EdgeInsets.only(top: 315),
@@ -94,6 +109,7 @@ class _Second_pageState extends State<Second_page> {
             StatusBar(),
             Header(),
             Welcome(),
+            GetName(),
             SizedBox(height: 222),
             Center(
               heightFactor: 1,
