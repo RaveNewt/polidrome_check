@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+
               cursorColor: greyColor.withOpacity(0.3),
               decoration: InputDecoration(
                 filled: true,

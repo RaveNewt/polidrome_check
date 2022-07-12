@@ -12,6 +12,8 @@ class First_page extends StatefulWidget {
 }
 
 class _First_pageState extends State<First_page> {
+  final _check = TextEditingController();
+  String message = '';
   @override
   Widget build(BuildContext context) {
     Widget Background() {
@@ -48,9 +50,53 @@ class _First_pageState extends State<First_page> {
         );
       }
 
-      Widget emailInput() {
-        return CustomTextField(
-          hintText: 'Palindrome',
+      Widget checkInput() {
+        return Container(
+            width: 310,
+            margin: EdgeInsets.only(bottom: 22),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: _check,
+                  cursorColor: greyColor.withOpacity(0.3),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelStyle: textBlack.copyWith(
+                      fontSize: 16,
+                      fontWeight: medium,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Polindrome',
+                    hintStyle: textGrey.copyWith(
+                      fontSize: 16,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(
+                        color: blackColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ));
+      }
+
+      Widget Welcome() {
+        return Container(
+          margin: EdgeInsets.only(top: 13),
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: Text(
+            'Message is: ' + message,
+            style: textBlack.copyWith(
+              fontSize: 12,
+              fontWeight: semiBold,
+            ),
+          ),
         );
       }
 
@@ -66,7 +112,7 @@ class _First_pageState extends State<First_page> {
                   borderRadius: BorderRadius.circular(10),
                 )),
             onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              FunctionMessage();
             },
             child: Text(
               'Check',
@@ -110,7 +156,8 @@ class _First_pageState extends State<First_page> {
         child: Column(
           children: [
             nameInput(),
-            emailInput(),
+            checkInput(),
+            Welcome(),
             checkButton(),
             nextButton(),
           ],
@@ -138,5 +185,23 @@ class _First_pageState extends State<First_page> {
         ),
       ],
     );
+  }
+
+  void FunctionMessage() {
+    String original = _check.text.replaceAll(' ', '');
+    String reverse = original.replaceAll(' ', '').split('').reversed.join('');
+    print(original);
+
+    String status = 'true';
+    if (original == reverse) {
+      status = 'Its A Palindrome';
+      print('true');
+    }
+    if (original != reverse) {
+      status = 'Its A Not Palindrome';
+      print(reverse);
+      print('false');
+    }
+    setState((() => message = status));
   }
 }
